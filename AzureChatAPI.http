@@ -1,4 +1,4 @@
-@AzureChatAPI_HostAddress = http://localhost:5106
+@AzureChatAPI_HostAddress = http://localhost:8080
 
 POST {{AzureChatAPI_HostAddress}}/chat2/
 Accept: application/json
