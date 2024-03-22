@@ -17,7 +17,8 @@ namespace AzureChatAPI.Controllers
             _logger = logger;
         }
 
-        [HttpPost(Name = "chat2")]
+        [HttpPost]
+        [Route("chat2")]
         public async IAsyncEnumerable<AnswerResults> PostChat2Async([FromBody] AIRequest request)
         {
             if (request != null && request.Messages != null)
@@ -44,6 +45,13 @@ namespace AzureChatAPI.Controllers
                 yield return results;
             }
             yield return new AnswerResults();
+        }
+
+        [HttpHead]
+        [Route("index")]
+        public void Get()
+        {
+            //testing method
         }
 
         protected string getString(string value)
