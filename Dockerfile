@@ -2,8 +2,8 @@
 
 FROM mcr.microsoft.com/dotnet/aspnet:8.0 AS base
 WORKDIR /app
-ENV DOTNET_URLS=http://+:8080
-EXPOSE 8080
+ENV DOTNET_URLS=http://+:4000
+EXPOSE 4000
 
 FROM mcr.microsoft.com/dotnet/sdk:8.0 AS build
 ARG BUILD_CONFIGURATION=Release
