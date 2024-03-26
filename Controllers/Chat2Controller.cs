@@ -24,8 +24,6 @@ namespace AzureChatAPI.Controllers
         {
             if (request != null && request.Messages != null)
             {
-                //ChatHistory chatHistory = JsonConvert.DeserializeObject<ChatHistory>(text);
-
                 AIConfig aiConfig = new AIConfig();
                 aiConfig.Url = getString(Configuration["AI:Url"]);
                 aiConfig.Key = getString(Configuration["AI:Key"]);
@@ -50,6 +48,7 @@ namespace AzureChatAPI.Controllers
 
         [HttpHead]
         [HttpGet]
+        [Route("azurechatapi")]
         [Route("index")]
         [Route("chat2/index")]
         [Route("azurechatapi/index")]
