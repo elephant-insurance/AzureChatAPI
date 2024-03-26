@@ -48,6 +48,7 @@ namespace AzureChatAPI.Controllers
         }
 
         [HttpHead]
+        [HttpGet]
         [Route("index")]
         public void Get()
         {

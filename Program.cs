@@ -1,3 +1,6 @@
+using AzureChatAPI;
+using System.Diagnostics;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
@@ -9,6 +12,11 @@ builder.Services.AddSwaggerGen();
 
 var app = builder.Build();
 
+var diagnosticSource = app.Services.GetRequiredService<DiagnosticListener>();
+using var badRequestListener = new BadRequestEventListener(diagnosticSource, (badRequestExceptionFeature) =>
+{
+    app.Logger.LogError(badRequestExceptionFeature.Error, "Bad request received");
+});
 
 app.UseDefaultFiles();
 app.UseStaticFiles();
@@ -30,10 +38,10 @@ app.UseCors(builder =>
 
 //app.UseHttpsRedirection();
 
-app.UseAuthorization();
+//app.UseAuthorization();
 
 app.MapControllers();
-
+    
 app.MapFallbackToFile("/index.html");
 
 app.Run();
