@@ -4,7 +4,6 @@ using System.Diagnostics;
 namespace AzureChatAPI.Controllers
 {
     [ApiController]
-    [Route("[controller]")]
     public class Chat2Controller : ControllerBase
     {
         private readonly IConfiguration Configuration;
@@ -19,6 +18,8 @@ namespace AzureChatAPI.Controllers
 
         [HttpPost]
         [Route("chat2")]
+        [Route("chat2/chat2")]
+        [Route("azurechatapi/chat2")]
         public async IAsyncEnumerable<AnswerResults> PostChat2Async([FromBody] AIRequest request)
         {
             if (request != null && request.Messages != null)
@@ -50,6 +51,8 @@ namespace AzureChatAPI.Controllers
         [HttpHead]
         [HttpGet]
         [Route("index")]
+        [Route("chat2/index")]
+        [Route("azurechatapi/index")]
         public void Get()
         {
             //testing method
